@@ -3,12 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Character Classes</title>
+  <title>Character Methods</title>
 </head>
 <body>
   <div id="app">
-    <h1>Персонажи</h1>
-    <div id="output"></div>
+    <h1>Демонстрация методов</h1>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <div id="bowman" class="character-card">
+        <h3>Леголас (Bowman)</h3>
+        <p>Уровень: <span class="level">1</span></p>
+        <p>Жизнь: <span class="health">100</span></p>
+        <p>Атака: <span class="attack">25</span></p>
+        <p>Защита: <span class="defence">25</span></p>
+        <div style="display: flex; gap: 5px; margin-top: 10px;">
+          <button class="btn-levelup" data-char="bowman">levelUp</button>
+          <button class="btn-damage" data-char="bowman">урон 50</button>
+        </div>
+      </div>
+
+      <div id="swordsman" class="character-card">
+        <h3>Арагорн (Swordsman)</h3>
+        <p>Уровень: <span class="level">1</span></p>
+        <p>Жизнь: <span class="health">100</span></p>
+        <p>Атака: <span class="attack">40</span></p>
+        <p>Защита: <span class="defence">10</span></p>
+        <div style="display: flex; gap: 5px; margin-top: 10px;">
+          <button class="btn-levelup" data-char="swordsman">levelUp</button>
+          <button class="btn-damage" data-char="swordsman">урон 50</button>
+        </div>
+      </div>
+
+      <div id="magician" class="character-card">
+        <h3>Гэндальф (Magician)</h3>
+        <p>Уровень: <span class="level">1</span></p>
+        <p>Жизнь: <span class="health">100</span></p>
+        <p>Атака: <span class="attack">10</span></p>
+        <p>Защита: <span class="defence">40</span></p>
+        <div style="display: flex; gap: 5px; margin-top: 10px;">
+          <button class="btn-levelup" data-char="magician">levelUp</button>
+          <button class="btn-damage" data-char="magician">урон 50</button>
+        </div>
+      </div>
+
+      <div id="undead" class="character-card">
+        <h3>Лич (Undead)</h3>
+        <p>Уровень: <span class="level">1</span></p>
+        <p>Жизнь: <span class="health">100</span></p>
+        <p>Атака: <span class="attack">25</span></p>
+        <p>Защита: <span class="defence">25</span></p>
+        <div style="display: flex; gap: 5px; margin-top: 10px;">
+          <button class="btn-levelup" data-char="undead">levelUp</button>
+          <button class="btn-damage" data-char="undead">урон 50</button>
+        </div>
+      </div>
+
+      <div id="zombie" class="character-card">
+        <h3>Зомби (Zombie)</h3>
+        <p>Уровень: <span class="level">1</span></p>
+        <p>Жизнь: <span class="health">100</span></p>
+        <p>Атака: <span class="attack">40</span></p>
+        <p>Защита: <span class="defence">10</span></p>
+        <div style="display: flex; gap: 5px; margin-top: 10px;">
+          <button class="btn-levelup" data-char="zombie">levelUp</button>
+          <button class="btn-damage" data-char="zombie">урон 50</button>
+        </div>
+      </div>
+
+      <div id="daemon" class="character-card">
+        <h3>Балрог (Daemon)</h3>
+        <p>Уровень: <span class="level">1</span></p>
+        <p>Жизнь: <span class="health">100</span></p>
+        <p>Атака: <span class="attack">10</span></p>
+        <p>Защита: <span class="defence">40</span></p>
+        <div style="display: flex; gap: 5px; margin-top: 10px;">
+          <button class="btn-levelup" data-char="daemon">levelUp</button>
+          <button class="btn-damage" data-char="daemon">урон 50</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin: 20px; text-align: center;">
+      <button id="reset-all" style="padding: 10px 30px; font-size: 16px;">Сбросить всех</button>
+    </div>
   </div>
 </body>
 </html>

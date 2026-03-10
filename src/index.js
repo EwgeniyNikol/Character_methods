@@ -6,28 +6,63 @@ import Undead from './js/characters/Undead';
 import Zombie from './js/characters/Zombie';
 import Daemon from './js/characters/Daemon';
 
-const output = document.getElementById('output');
+const characters = {
+  bowman: new Bowerman('Леголас'),
+  swordsman: new Swordsman('Арагорн'),
+  magician: new Magician('Гэндальф'),
+  undead: new Undead('Лич'),
+  zombie: new Zombie('Зомби'),
+  daemon: new Daemon('Балрог')
+};
 
-try {
-  const characters = [
-    new Bowerman('Legolas'),
-    new Swordsman('Aragorn'),
-    new Magician('Gandalf'),
-    new Undead('Lich'),
-    new Zombie('Walker'),
-    new Daemon('Balrog'),
-  ];
-
-  characters.forEach((char) => {
-    const div = document.createElement('div');
-    div.innerHTML = `
-      <strong>${char.name}</strong> (${char.type})<br>
-      Health: ${char.health}, Level: ${char.level}<br>
-      Attack: ${char.attack}, Defence: ${char.defence}
-      <hr>
-    `;
-    output.appendChild(div);
-  });
-} catch (error) {
-  output.innerHTML = `<p style="color: red">Ошибка: ${error.message}</p>`;
+function updateDisplay(charName) {
+  const char = characters[charName];
+  const card = document.getElementById(charName);
+  card.querySelector('.level').textContent = char.level;
+  card.querySelector('.health').textContent = char.health;
+  card.querySelector('.attack').textContent = char.attack;
+  card.querySelector('.defence').textContent = char.defence;
 }
+
+function resetAll() {
+  Object.keys(characters).forEach(key => {
+    const char = characters[key];
+    char.level = 1;
+    char.health = 100;
+    if (char.type === 'Bowman' || char.type === 'Undead') {
+      char.attack = 25;
+      char.defence = 25;
+    } else if (char.type === 'Swordsman' || char.type === 'Zombie') {
+      char.attack = 40;
+      char.defence = 10;
+    } else {
+      char.attack = 10;
+      char.defence = 40;
+    }
+    updateDisplay(key);
+  });
+}
+
+document.querySelectorAll('.btn-levelup').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const charName = btn.dataset.char;
+    try {
+      characters[charName].levelUp();
+      updateDisplay(charName);
+    } catch (e) {
+      alert(e.message);
+    }
+  });
+});
+
+document.querySelectorAll('.btn-damage').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const charName = btn.dataset.char;
+    characters[charName].damage(50);
+    updateDisplay(charName);
+  });
+});
+
+document.getElementById('reset-all').addEventListener('click', resetAll);
+
+resetAll();
