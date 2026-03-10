@@ -12,7 +12,7 @@ const characters = {
   magician: new Magician('Гэндальф'),
   undead: new Undead('Лич'),
   zombie: new Zombie('Зомби'),
-  daemon: new Daemon('Балрог')
+  daemon: new Daemon('Балрог'),
 };
 
 function updateDisplay(charName) {
@@ -25,7 +25,7 @@ function updateDisplay(charName) {
 }
 
 function resetAll() {
-  Object.keys(characters).forEach(key => {
+  Object.keys(characters).forEach((key) => {
     const char = characters[key];
     char.level = 1;
     char.health = 100;
@@ -43,19 +43,19 @@ function resetAll() {
   });
 }
 
-document.querySelectorAll('.btn-levelup').forEach(btn => {
+document.querySelectorAll('.btn-levelup').forEach((btn) => {
   btn.addEventListener('click', () => {
     const charName = btn.dataset.char;
     try {
       characters[charName].levelUp();
       updateDisplay(charName);
     } catch (e) {
-      alert(e.message);
+      console.error(e.message);
     }
   });
 });
 
-document.querySelectorAll('.btn-damage').forEach(btn => {
+document.querySelectorAll('.btn-damage').forEach((btn) => {
   btn.addEventListener('click', () => {
     const charName = btn.dataset.char;
     characters[charName].damage(50);
