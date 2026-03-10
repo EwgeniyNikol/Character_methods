@@ -70,9 +70,9 @@ describe('Character methods', () => {
     character.attack = 25;
     character.defence = 25;
     character.health = 50;
-    
+
     character.levelUp();
-    
+
     expect(character.level).toBe(2);
     expect(character.attack).toBe(30); // 25 * 1.2 = 30
     expect(character.defence).toBe(30); // 25 * 1.2 = 30
@@ -82,7 +82,7 @@ describe('Character methods', () => {
   test('levelUp throws error if health <= 0', () => {
     const character = new Bowerman('Legolas');
     character.health = 0;
-    
+
     expect(() => character.levelUp()).toThrow('Нельзя повысить уровень умершего');
   });
 
@@ -90,9 +90,9 @@ describe('Character methods', () => {
     const character = new Bowerman('Legolas');
     character.defence = 25;
     character.health = 100;
-    
+
     character.damage(40);
-    
+
     expect(character.health).toBe(70);
   });
 
@@ -100,18 +100,18 @@ describe('Character methods', () => {
     const character = new Bowerman('Legolas');
     character.defence = 25;
     character.health = 20;
-    
+
     character.damage(40);
-    
+
     expect(character.health).toBe(0);
   });
 
   test('damage does nothing if health <= 0', () => {
     const character = new Bowerman('Legolas');
     character.health = 0;
-    
+
     character.damage(40);
-    
+
     expect(character.health).toBe(0);
   });
 });
