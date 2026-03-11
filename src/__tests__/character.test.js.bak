@@ -1,7 +1,52 @@
-import Character from '../js/Character';
 import Bowerman from '../js/characters/Bowerman';
+import Swordsman from '../js/characters/Swordsman';
+import Magician from '../js/characters/Magician';
+import Undead from '../js/characters/Undead';
+import Zombie from '../js/characters/Zombie';
+import Daemon from '../js/characters/Daemon';
+import Character from '../js/Character';
 
-describe('Character validation', () => {
+describe('Character classes', () => {
+  test('Bowerman creation', () => {
+    const character = new Bowerman('Legolas');
+    expect(character.name).toBe('Legolas');
+    expect(character.type).toBe('Bowman');
+    expect(character.health).toBe(100);
+    expect(character.level).toBe(1);
+    expect(character.attack).toBe(25);
+    expect(character.defence).toBe(25);
+  });
+
+  test('Swordsman creation', () => {
+    const character = new Swordsman('Aragorn');
+    expect(character.attack).toBe(40);
+    expect(character.defence).toBe(10);
+  });
+
+  test('Magician creation', () => {
+    const character = new Magician('Gandalf');
+    expect(character.attack).toBe(10);
+    expect(character.defence).toBe(40);
+  });
+
+  test('Undead creation', () => {
+    const character = new Undead('Lich');
+    expect(character.attack).toBe(25);
+    expect(character.defence).toBe(25);
+  });
+
+  test('Zombie creation', () => {
+    const character = new Zombie('Walker');
+    expect(character.attack).toBe(40);
+    expect(character.defence).toBe(10);
+  });
+
+  test('Daemon creation', () => {
+    const character = new Daemon('Balrog');
+    expect(character.attack).toBe(10);
+    expect(character.defence).toBe(40);
+  });
+
   test('Invalid name (too short)', () => {
     expect(() => new Bowerman('A')).toThrow('Имя должно быть от 2 до 10 символов');
   });
@@ -28,15 +73,10 @@ describe('Character methods', () => {
 
     character.levelUp();
 
-    const expected = {
-      name: 'Legolas',
-      type: 'Bowman',
-      health: 100,
-      level: 2,
-      attack: 30,
-      defence: 30,
-    };
-    expect(character).toEqual(expected);
+    expect(character.level).toBe(2);
+    expect(character.attack).toBe(30); // 25 * 1.2 = 30
+    expect(character.defence).toBe(30); // 25 * 1.2 = 30
+    expect(character.health).toBe(100);
   });
 
   test('levelUp throws error if health <= 0', () => {
